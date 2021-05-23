@@ -6,6 +6,6 @@ import com.namerand.name.rank.demo.entity.EntityName;
 
 public interface RankCalculationService {
 	
-	Integer totalRankBasic(List<String>firstNameList);
+	Integer totalRank(List<EntityName>  rankedNames) ;
 
 }

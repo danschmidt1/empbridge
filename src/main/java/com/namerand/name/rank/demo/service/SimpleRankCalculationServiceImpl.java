@@ -17,11 +17,9 @@ public class SimpleRankCalculationServiceImpl implements RankCalculationService 
     public	final static String alphabet = "abcdefghijklmnopqrstuvwxyz";
 	
 	@Override
-	public Integer totalRankBasic(List<String> firstNameList) {
-        List<String>sortedList = firstNameList.stream().sorted().collect(Collectors.toList());
-		
-		List<EntityName> rankedNames = sortedList.stream()
-			    .map(create(EntityName::new, EntityName::setFirstName)).collect(Collectors.toList());
+	public Integer totalRank(List<EntityName>  rankedNames) {
+
+		rankedNames.sort((EntityName s1, EntityName s2)->s1.getFirstName().compareTo(s2.getFirstName())); 
 	
 		int totalRank = 0;
 		int currentPosition = 1;
@@ -44,12 +42,5 @@ public class SimpleRankCalculationServiceImpl implements RankCalculationService 
 	 	return score;
 	}
 	
-	public static <T,V> Function<V,T> create(
-		    Supplier<? extends T> constructor, BiConsumer<? super T, ? super V> setter) {
-		    return v -> {
-		        T t=constructor.get();
-		        setter.accept(t, v);
-		        return t;
-		    };
-		}
+
 }
