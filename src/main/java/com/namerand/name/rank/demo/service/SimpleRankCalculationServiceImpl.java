@@ -19,7 +19,7 @@ public class SimpleRankCalculationServiceImpl implements RankCalculationService 
 	@Override
 	public Integer totalRank(List<EntityName>  rankedNames) {
 
-		rankedNames.sort((EntityName s1, EntityName s2)->s1.getFirstName().compareTo(s2.getFirstName())); 
+		rankedNames.sort((EntityName s1, EntityName s2)->(s1.getFirstName().toLowerCase()).compareTo(s2.getFirstName().toLowerCase())); 
 	
 		int totalRank = 0;
 		int currentPosition = 1;
